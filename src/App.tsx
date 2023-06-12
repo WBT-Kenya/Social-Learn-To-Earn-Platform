@@ -1,7 +1,16 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Home, Login, Signup } from "./pages";
+
+const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  { path: "/login", element: <Login /> },
+  { path: "/signup", element: <Signup /> },
+]);
+
 function App() {
   return (
     <section>
-      <h2>Home</h2>
+      <RouterProvider router={router} />
     </section>
   );
 }
