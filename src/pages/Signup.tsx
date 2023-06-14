@@ -66,7 +66,7 @@ const Signup = () => {
         </a>
       </div>
       <div className="basis-1/2">
-        <img src={Image} alt="" className="w-[736px] h-[752px]" />
+        <img src={Image} alt="" className="w-[736px] h-full" />
       </div>
     </section>
   );
