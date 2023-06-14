@@ -8,7 +8,7 @@ const Signup = () => {
         <div className="flex justify-between">
           <h2 className="font-bold text-[40px] text-[#0F305E]">Sign Up</h2>
           <a
-            href="/signup"
+            href="/login"
             className="bg-[#F5F5F5] rounded-[34px] text-[#000000] px-16 py-3 text-[16px] leading-[26px]"
           >
             Sign In
