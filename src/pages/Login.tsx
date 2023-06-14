@@ -4,7 +4,7 @@ import Google from "../assets/google.png";
 const Login = () => {
   return (
     <section className="flex px-8 py-16 h-screen">
-      <div className="flex flex-col space-y-8 px-16 py-32 basis-1/2">
+      <div className="flex flex-col space-y-8 px-16 py-32 lg:basis-1/2">
         <div className="flex justify-between">
           <h2 className="font-bold text-[40px] text-[#0F305E]">Login</h2>
           <a
@@ -54,7 +54,7 @@ const Login = () => {
           </div>
         </a>
       </div>
-      <div className="basis-1/2">
+      <div className="hidden lg:block basis-1/2">
         <img src={Image} alt="" className="w-[736px] h-full" />
       </div>
     </section>
