@@ -39,22 +39,12 @@ module.exports = {
       url:  "https://testnet.hedera.com",
       //url : "https://pool.arkhia.io/hedera/testnet/json-rpc/v1/7c0AHt21BVc4iLfL1b1Lcfac0YabfBcA",
      //EVM_PRIVATE_KEY
-      account:[process.env.EVM_PRIVATE_KEY], //.toString(),
-
+     // account:[process.env.EVM_PRIVATE_KEY], //.toString(),
+        accounts:EVM_PRIVATE_KEY.fromString('0x6ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714'),
       chainId: 296,
     }
   },
-  // defaultNetwork:"relay",
-  // networks: {
-  //   relay: {
-  //     url: "http://localhost:7546",
-  //     accounts: [
-  //       "0x2e1d968b041d84dd120a5860cee60cd83f9374ef527ca86996317ada3d0d03e7",
-  //       "0x45a5a7108a18dd5013cf2d5857a28144beadc9c70b3bdbd914e38df4e804b8d8",
-  //     ],
-  //     chainId: 298,
-  //   },
-  // },
+ 
   paths: {
     sources: "./contracts/hts-precompile",
     tests: "./test",
