@@ -1,6 +1,10 @@
 require("@nomicfoundation/hardhat-chai-matchers");
 require("@nomiclabs/hardhat-ethers");
 require("@openzeppelin/hardhat-upgrades");
+require("@nomicfoundation/hardhat-network-helpers");
+require("@nomiclabs/hardhat-etherscan");
+//require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -20,7 +24,7 @@ module.exports = {
     }
   },
   solidity: {
-    version: "0.8.9",
+    version: "0.8.19",
     settings: {
       optimizer: {
         enabled: true,
@@ -28,15 +32,33 @@ module.exports = {
       },
     },
   },
-  defaultNetwork: "relay",
+ // const hex = utf8ToHex(EVM_PRIVATE_KEY ?? '');
+  defaultNetwork:"hedera",
   networks: {
-    relay: {
-      url: "http://localhost:7546",
-      accounts: [
-        "0x2e1d968b041d84dd120a5860cee60cd83f9374ef527ca86996317ada3d0d03e7",
-        "0x45a5a7108a18dd5013cf2d5857a28144beadc9c70b3bdbd914e38df4e804b8d8",
-      ],
-      chainId: 298,
-    },
+    hedera: { // hedera testnet RPC
+      url:  "https://testnet.hedera.com",
+      //url : "https://pool.arkhia.io/hedera/testnet/json-rpc/v1/7c0AHt21BVc4iLfL1b1Lcfac0YabfBcA",
+     //EVM_PRIVATE_KEY
+      account:[process.env.EVM_PRIVATE_KEY], //.toString(),
+
+      chainId: 296,
+    }
+  },
+  // defaultNetwork:"relay",
+  // networks: {
+  //   relay: {
+  //     url: "http://localhost:7546",
+  //     accounts: [
+  //       "0x2e1d968b041d84dd120a5860cee60cd83f9374ef527ca86996317ada3d0d03e7",
+  //       "0x45a5a7108a18dd5013cf2d5857a28144beadc9c70b3bdbd914e38df4e804b8d8",
+  //     ],
+  //     chainId: 298,
+  //   },
+  // },
+  paths: {
+    sources: "./contracts/hts-precompile",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts"
   },
 };
