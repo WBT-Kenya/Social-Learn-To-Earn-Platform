@@ -6,18 +6,27 @@ const Sidebar = () => {
       <div className="flex flex-col space-y-16">
         <p className="text-white font-black text-5xl self-center px-8">L.</p>
         <div className="flex flex-col space-y-6">
-          <a href="/" className="text-white hover:bg-white hover:text-black text-center py-2">
+          <a
+            href="/"
+            className="text-white hover:bg-white hover:text-black text-center py-2"
+          >
             Home
           </a>
-          <a href="/courses" className="text-white hover:bg-white hover:text-black text-center py-2">
-            Content
+          <a
+            href="/courses"
+            className="text-white hover:bg-white hover:text-black text-center py-2"
+          >
+            Courses
           </a>
-          <a href="/quizzes" className="text-white hover:bg-white hover:text-black text-center py-2">
+          <a
+            href="/quizzes"
+            className="text-white hover:bg-white hover:text-black text-center py-2"
+          >
             Quizzes
           </a>
         </div>
       </div>
-      <div className="px-8">
+      <div className="px-8 self-center">
         <img src={LogoutIcon} alt="" />
       </div>
     </section>

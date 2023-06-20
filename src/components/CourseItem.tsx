@@ -9,8 +9,10 @@ const CourseItem = ({ course }: { course: Course }) => {
   return (
     <section className="flex flex-col">
       <img src={image} alt="" />
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <div className="bg-[#EEEFEF] flex flex-col space-y-3 text-black hover:text-white hover:bg-black p-8">
+        <h3 className="text-2xl font-semibold text-center ">{title}</h3>
+        <p className="font-light">{description}</p>
+      </div>
     </section>
   );
 };

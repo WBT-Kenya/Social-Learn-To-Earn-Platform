@@ -3,10 +3,10 @@ import { Sidebar } from "../components";
 const Home = () => {
   return (
     <section className="flex p-8">
-      <section className="basis-1/4">
+      <section className="basis-1/5">
         <Sidebar />
       </section>
-      <section className="basis-3/4 flex flex-col">
+      <section className="basis-4/5 flex flex-col">
         <nav className="flex space-x-6 px-16 py-4">
           <a
             href="/login"
