@@ -2,6 +2,9 @@
   "name": "@hashgraph/smart-contracts",
   "version": "0.4.0-SNAPSHOT",
   "description": "Hedera Smart Contract Service supporting files",
+  "scripts": {
+    "start": "nodemon mongoServer.js"
+  },
   "files": [
     "/contracts/**/*.sol",
     "/contracts/**/**/**/*.sol"
@@ -25,17 +28,23 @@
     "@openzeppelin/hardhat-upgrades": "^1.22.1",
     "hardhat": "^2.15.0",
     "mocha-junit-reporter": "^2.2.0",
-    "mocha-multi-reporters": "^1.5.1"
+    "mocha-multi-reporters": "^1.5.1",
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "@hashgraph/sdk": "latest",
     "@nomicfoundation/solidity-analyzer": "^0.1.0",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-etherscan": "^3.1.7",
-    "dotenv": "^16.2.0",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
     "ethers": "^5.7.2",
+    "express": "^4.18.2",
     "hashconnect": "^0.0.6",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.0",
+    "multer": "^1.4.5-lts.1",
     "solc": "^0.8.20"
   }
-  
 }
