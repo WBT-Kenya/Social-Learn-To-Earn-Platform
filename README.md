@@ -1,58 +1,35 @@
-# Hedera Smart Contracts
-Reference library for Smart Contracts utilized by the Hedera network with supporting files and examples.
+# LearnToEarn Backend- QuickStart<br>
 
-## Overview
-The Hedera network utilizes system contracts at a reserved contract address on the EVM to surface HAPI service functionality through EVM processed transactions.
-These system contracts are precompiled smart contracts whose function selectors are mapped to defined network logic.
-In this way EVM users can utilize exposed HAPI features natively in their smart contracts.
+-A collections of code snippets to get your started with Learn to Earn social platform and the Hedera blockchain network.<br>The code is tested with Hedera Consensus testnet and  the default hashgraph-sdk.
+<p>
+-To develop, test and run this project, you are required to clone the project in your local machine, install all the dependencies and then execute the related COMMANDS on "localhost:3001". <br> -We use hedera's javascript SDK with npm package.
+</p>
 
-The precompiled functions are defined in this library and picked up by the [Hedera Services](https://github.com/hashgraph/hedera-services) repo.
+# Installations<br>
+-Go to the directory that you have cloned this project and run:<br>
+-npm init -y<br>
+-npm install --save @hashgraph/sdk<br>
+-npm install dotenv<p>
 
-### HTS Precompile
+# Languages <br>
+-Nodejs <br>
+-Reactjs <br>
+-Solidity <p>
 
-The Hedera Token Service (HTS) functionality is defined by the [IHederaTokenService.sol](contracts/hts-precompile/IHederaTokenService.sol) interface smart contract as defined in [HIP 206](https://hips.hedera.com/hip/hip-206), [HIP 376](https://hips.hedera.com/hip/hip-376) and [HIP 514](https://hips.hedera.com/hip/hip-514). The contract is exposed via the `0x167` address.
-Reference smart contracts to call these functions as well as examples can be found under [contracts/hts-precompile](contracts/hts-precompile)
+# Getting Started <br>
+-Create Hedera Testnet account. Visit  https://docs.hedera.com/hedera/getting-started/environment-set-up<br>
+-Save the account credentials/environment variables in .env file of your project.<br>
+-Store the .env file in the gitignore file so that it's not pushed to the repo with the other necessary files.<br>
+-Install Hashpack browser extension wallet and set up testnet account in it.<br>
+-Create Mongodb Cloud Atlas account . Visit https://www.mongodb.com/cloud/atlas/register <br>
+-Configure your application/project to connect with the database for user authentication storage.<br>
+-Also create IPFS account for storage of content files. <br>
+-Test using Postman that mongodb and IPFS are connected to your project.<br>
 
-For further details on methods, hashes and availability please refer to [HTS Precompile methods](contracts/hts-precompile/README.md)
 
-- Solidity files updated on April 20, 2022 to add token create support
-- Solidity files updated on Jan 18, 2022
 
-### Exchange Rate Precompile
 
-The Exchange Rate functionality is defined by the [IExchangeRate.sol](contracts/exchange-rate-precompile/IExchangeRate.sol) interface smart contract as defined in [HIP 475](https://hips.hedera.com/hip/hip-475) and exposed via the `0x168` address.
-Reference smart contracts to call these functions as well as examples can be found under [contracts/exchange-rate-precompile](contracts/exchange-rate-precompile)
 
-For further details on methods, hashes and availability please refer to [Exchange Rate Precompile methods](contracts/exchange-rate-precompile/README.md)
 
-### Prng Precompile
 
-The PRNG functionality is defined by the [IPrng.sol](contracts/util-precompile/IPrngSystemContract.sol) interface smart contract as defined in [HIP 351](https://hips.hedera.com/hip/hip-351) and exposed via the `0x169` address.
-Reference smart contracts to call these functions as well as examples can be found under [contracts/util-precompile](contracts/util-precompile)
 
-For further details on methods, hashes and availability please refer to [PRNG Precompile methods](contracts/util-precompile/README.md)
-
-## Support
-
-If you have a question on how to use the product, please see our
-[support guide](https://github.com/hashgraph/.github/blob/main/SUPPORT.md).
-
-## Contributing
-
-Contributions are welcome. Please see the
-[contributing guide](https://github.com/hashgraph/.github/blob/main/CONTRIBUTING.md)
-to see how you can get involved.
-
-## Code of Conduct
-
-This project is governed by the
-[Contributor Covenant Code of Conduct](https://github.com/hashgraph/.github/blob/main/CODE_OF_CONDUCT.md). By
-participating, you are expected to uphold this code of conduct. Please report unacceptable behavior
-to [oss@hedera.com](mailto:oss@hedera.com).
-
-## License
-
-[Apache License 2.0](LICENSE)
-
-## Smart contracts - testing
-[Smart contracts tests - documentation](https://raw.githubusercontent.com/hashgraph/hedera-smart-contracts/main/test/README.md)
