@@ -15,11 +15,11 @@ import './examples/token-transfer/TokenTransferContract.sol';
  
 contract LTE is HederaTokenService, ExpiryHelper, KeyHelper {
 
-    string creatorName = "creatorName";
-    string name = "tokenName";
-    string symbol = "tokenSymbol";
+    string creatorName = "AWoW3";
+    string name = "AWoW3";
+    string symbol = "ABC";
     string memo = "memo";
-    int64 initialTokenSupply = 10000;
+    int64 initialTotalSupply = 10000;
     int64 maxSupply = 10000;
     int32 decimals = 8;
     bool freezeDefaultStatus = false;
@@ -29,59 +29,8 @@ contract LTE is HederaTokenService, ExpiryHelper, KeyHelper {
     event MintedToken(int64 newTotalSupply, int64[] serialNumbers);
     event KycGranted(bool kycGranted);
 
-    // Memo struct.
-    struct LTELearner {
-        address from;
-        uint256 timestamp;
-        string name;
-        string message;
-        uint256 score;
-    }
-
-     address payable public owner;//stores ethereum accounts
-    constructor(string memory _creatorName, string memory _tokenName, string memory _tokenSymbol, int64 _initialTokenSupply)  {
-        
-        //owner = payable(msg.sender);
-        creatorName = _creatorName;
-        _tokenName = _tokenName;
-        _tokenSymbol = _tokenSymbol;
-        initialTokenSupply = _initialTokenSupply;
     
-    }
-        LTELearner[] lTELearners;
-
-    mapping(address => bool) public authenticatedUsers;
-    
-    event UserAuthenticated(address indexed user);
-
-    function authenticate() public {
-        authenticatedUsers[msg.sender] = true;
-        emit UserAuthenticated(msg.sender);
-    }
-    function isUserAuthenticated(address user) public view returns (bool) {
-        return authenticatedUsers[user];
-    }
-
-    function sendAssessmentResult(string memory _name, string memory _message, uint256 _score) external payable returns (uint)  {
-
-        require(_score > 50, "Qualified to earn tokens :)");
-
-        lTELearners.push(LTELearner(
-            msg.sender,
-            block.timestamp,
-            _name,
-            _message,
-            _score
-            
-        ));
-
-        //for every qualified score, the total value of tokenSupply will reduce because token will be given to learner.
-        initialTokenSupply -= 10000;
-
-        return msg.value;
-    }
-
-    function createFungibleToken(
+    function createFungibleTokenPublic(
         address treasury
     ) public payable {
         IHederaTokenService.TokenKey[] memory keys = new IHederaTokenService.TokenKey[](5);
@@ -100,7 +49,7 @@ contract LTE is HederaTokenService, ExpiryHelper, KeyHelper {
         );
 
         (int responseCode, address tokenAddress) =
-        HederaTokenService.createFungibleToken(token, initialTokenSupply, decimals);
+        HederaTokenService.createFungibleToken(token, initialTotalSupply, decimals);
 
         if (responseCode != HederaResponseCodes.SUCCESS) {
             revert ();
@@ -108,8 +57,8 @@ contract LTE is HederaTokenService, ExpiryHelper, KeyHelper {
 
         emit CreatedToken(tokenAddress);
     }
-
-    function mintFungibleToken(address token, int64 amount, bytes[] memory metadata) public
+    
+    function mintTokenToAddressPublic(address token, int64 amount, bytes[] memory metadata) public
     returns (int responseCode, int64 newTotalSupply, int64[] memory serialNumbers)  {
         (responseCode, newTotalSupply, serialNumbers) = HederaTokenService.mintToken(token, amount, metadata);
         emit ResponseCode(responseCode);
@@ -119,7 +68,26 @@ contract LTE is HederaTokenService, ExpiryHelper, KeyHelper {
         }
 
         emit MintedToken(newTotalSupply, serialNumbers);
+
+        HederaTokenService.transferNFT(token, address(this), msg.sender, serialNumbers[0]);
     }
+
+    function tokenAssociate(address sender, address tokenAddress) external {
+        int response = HederaTokenService.associateToken(sender, tokenAddress);
+
+        if (response != HederaResponseCodes.SUCCESS) {
+            revert ("Associate Failed");
+        }
+    }
+
+    function tokenTransfer(address tokenId, address fromAccountId , address toAccountId , int64 tokenAmount) external {
+        int response = HederaTokenService.transferToken(tokenId, fromAccountId, toAccountId, tokenAmount);
+
+        if (response != HederaResponseCodes.SUCCESS) {
+            revert ("Transfer Failed");
+        }
+    }
+  
 
 }
 

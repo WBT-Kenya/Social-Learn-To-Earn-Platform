@@ -28,15 +28,6 @@ contract TokenTransferContract is HederaTokenService, ExpiryHelper, KeyHelper {
         }
     }
 
-    function transferNFTsPublic(address token, address[] memory sender, address[] memory receiver, int64[] memory serialNumber) external returns (int256 responseCode) {
-        responseCode = HederaTokenService.transferNFTs(token, sender, receiver, serialNumber);
-        emit ResponseCode(responseCode);
-
-        if (responseCode != HederaResponseCodes.SUCCESS) {
-            revert ();
-        }
-    }
-
     function transferTokenPublic(address token, address sender, address receiver, int64 amount) public returns (int responseCode) {
         responseCode = HederaTokenService.transferToken(token, sender, receiver, amount);
         emit ResponseCode(responseCode);
@@ -46,26 +37,8 @@ contract TokenTransferContract is HederaTokenService, ExpiryHelper, KeyHelper {
         }
     }
 
-    function transferNFTPublic(address token, address sender, address receiver, int64 serialNumber) public returns (int responseCode) {
-        responseCode = HederaTokenService.transferNFT(token, sender, receiver, serialNumber);
-        emit ResponseCode(responseCode);
-
-        if (responseCode != HederaResponseCodes.SUCCESS) {
-            revert ();
-        }
-    }
-
     function transferFromPublic(address token, address from, address to, uint256 amount) public returns (int64 responseCode) {
         responseCode = this.transferFrom(token, from, to, amount);
-        emit ResponseCode(responseCode);
-
-        if (responseCode != HederaResponseCodes.SUCCESS) {
-            revert ();
-        }
-    }
-
-    function transferFromNFTPublic(address token, address from, address to, uint256 serialNumber) public returns (int64 responseCode) {
-        responseCode = this.transferFromNFT(token, from, to, serialNumber);
         emit ResponseCode(responseCode);
 
         if (responseCode != HederaResponseCodes.SUCCESS) {
@@ -91,12 +64,4 @@ contract TokenTransferContract is HederaTokenService, ExpiryHelper, KeyHelper {
         }
     }
 
-    function approveNFTPublic(address token, address approved, uint256 serialNumber) public returns (int responseCode) {
-        responseCode = HederaTokenService.approveNFT(token, approved, serialNumber);
-        emit ResponseCode(responseCode);
-
-        if (responseCode != HederaResponseCodes.SUCCESS) {
-            revert ();
-        }
-    }
 }

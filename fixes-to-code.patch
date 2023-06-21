@@ -1,0 +1,314 @@
+diff --git a/.env b/.env
+index 0558004..e64eed3 100644
+--- a/.env
++++ b/.env
+@@ -9,15 +9,15 @@ ARKHIA_JSON_RPC_API_SUFFIX="json-rpc/v1"
+ ARKHIA_BASE_API_URL="https://dashboard.arkhia.io/"
+ ARKHIA_API_KEY="7c0AHt21BVc4iLfL1b1Lcfac0YabfBcA"
+ 
+-OPERATOR_ID=0.0.13731048,  
++OPERATOR_ID=0.0.13731048
+ OPERATOR_PVKEY=302e020100300506032b65700422042060e1c882d771dddb846e319646833fcd01e046db90f5814494a7653c88812fea
+ 
+ OPERATOR_PVKEY_ETH=0x60e1c882d771dddb846e319646833fcd01e046db90f5814494a7653c88812fea
+ 
+-OPERATOR_ID_ECDSA = 0.0.13332905
+-OPERATOR_PVKEY_ECDSA="3030020100300706052b8104000a042204206ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714",
++OPERATOR_ID_ECDSA=0.0.13332905
++OPERATOR_PVKEY_ECDSA="3030020100300706052b8104000a042204206ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714"
+ OPERATOR_ETHKEY_ECDSA="0x6ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714"
+-EVM_PRIVATE_KEY = "0x6ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714"
++EVM_PRIVATE_KEY="0x6ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714"
+ 
+ # TEST ACCOUNTS
+ ALICE_ID=OPTIONAL_ALICE_ACCOUNT_ID
+diff --git a/hardhat.config.js b/hardhat.config.js
+index 1e1d2a9..de22b36 100644
+--- a/hardhat.config.js
++++ b/hardhat.config.js
+@@ -15,13 +15,13 @@ module.exports = {
+     forbidOnly: Boolean(process.env.CI),
+     reporter: "mocha-multi-reporters",
+     reporterOption: {
+-      "reporterEnabled": "spec, mocha-junit-reporter",
+-      "mochaJunitReporterReporterOptions": {
++      reporterEnabled: "spec, mocha-junit-reporter",
++      mochaJunitReporterReporterOptions: {
+         mochaFile: "test-results.[hash].xml",
+-        "includePending": true,
+-        "outputs": true
+-      }
+-    }
++        includePending: true,
++        outputs: true,
++      },
++    },
+   },
+   solidity: {
+     version: "0.8.19",
+@@ -32,23 +32,23 @@ module.exports = {
+       },
+     },
+   },
+- // const hex = utf8ToHex(EVM_PRIVATE_KEY ?? '');
+-  defaultNetwork:"hedera",
++  // const hex = utf8ToHex(EVM_PRIVATE_KEY ?? '');
++  defaultNetwork: "hedera",
+   networks: {
+-    hedera: { // hedera testnet RPC
+-      url:  "https://testnet.hedera.com",
++    hedera: {
++      // hedera testnet RPC
++      url: "https://testnet.hedera.com",
+       //url : "https://pool.arkhia.io/hedera/testnet/json-rpc/v1/7c0AHt21BVc4iLfL1b1Lcfac0YabfBcA",
+-     //EVM_PRIVATE_KEY
+-     // account:[process.env.EVM_PRIVATE_KEY], //.toString(),
+-        accounts:EVM_PRIVATE_KEY.fromString('0x6ee12044746e528d617d77261c9a9a4a288ef0a8142889b7a781093166946714'),
++      //EVM_PRIVATE_KEY
++      account: [process.env.OPERATOR_ETHKEY_ECDSA],
+       chainId: 296,
+-    }
++    },
+   },
+- 
++
+   paths: {
+     sources: "./contracts/hts-precompile",
+     tests: "./test",
+     cache: "./cache",
+-    artifacts: "./artifacts"
++    artifacts: "./artifacts",
+   },
+ };
+diff --git a/script/deployLTE.js b/script/deployLTE.js
+index 7567d75..595dea2 100644
+--- a/script/deployLTE.js
++++ b/script/deployLTE.js
+@@ -1,51 +1,76 @@
+ console.clear();
+ const hre = require("hardhat");
+ require("dotenv").config();
+-const { Client, AccountId, TokenSupplyType, ContractFunctionParameters, AccountCreateTransaction, PrivateKey, Hbar } = require('@hashgraph/sdk');
++const {
++  Client,
++  AccountId,
++  TokenSupplyType,
++  ContractFunctionParameters,
++  AccountCreateTransaction,
++  PrivateKey,
++  Hbar,
++} = require("@hashgraph/sdk");
+ 
+-const clientHandler = require('../contracts/hedera.sdk/handlers/clientHandler');
++const clientHandler = require("../contracts/hedera.sdk/handlers/clientHandler");
++const contractHandler = require("../contracts/hedera.sdk/handlers/contractHandler");
+ const signHandler = require("../contracts/hedera.sdk/handlers/signHandler");
+-const tokenHandler = require('../contracts/hedera.sdk/handlers/tokenHandler');
++const tokenHandler = require("../contracts/hedera.sdk/handlers/tokenHandler");
+ 
+-
+-async function createFungibleToken(name, symbol, supplyType, initialTokenSupply) {
++async function createFungibleToken(
++  name,
++  symbol,
++  supplyType,
++  initialTokenSupply
++) {
+   // Create initial token
+   //const contract = await ethers.getContractFactory(LTE);
+-  let contractCreate = new ContractCreateFlow()
++  let contractCreate = new ContractCreateFlow();
+   const createToken = new ContractExecuteTransaction()
+     .setContractId(contractId)
+     .setGas(500000)
+     .setPayableAmount(50)
+     .setFunction("createFungibleToken");
+-   
++
+   const txResponse = await contractCreate.execute(client);
+- 
++
+   const createTokenTx = await createToken.execute(client);
+   const createTokenRx = await createTokenTx.getRecord(client);
+-  const tokenIdSolidityAddr = createTokenRx.contractFunctionResult.getAddress(0);
++  const tokenIdSolidityAddr =
++    createTokenRx.contractFunctionResult.getAddress(0);
+   const tokenId = TokenId.fromSolidityAddress(tokenIdSolidityAddr);
+-    
+-  console.log(`\nToken successfully created with ID: ${tokenId} from contract Id ${contractId}\n`);
+-  
+-  return tokenId;
+- }
+ 
+- async function CreateLTEInitialData(getLTEContractPath, tokenInfo, client, treasuryKey) {
++  console.log(
++    `\nToken successfully created with ID: ${tokenId} from contract Id ${contractId}\n`
++  );
+ 
+-    // Deploys LTE contract (must be compiled first)
+-    const contractId = await storeAndDeployLTEContract(client, treasuryKey, getLTEContractPath, tokenInfo);
++  return tokenId;
++}
+ 
+-    // Mint Token supply through contract
+-    console.log(`Contract is minting the token...`);
+-    const tokenId = await createFungibleToken(client, contractId);
++async function CreateLTEInitialData(
++  getLTEContractPath,
++  tokenInfo,
++  client,
++  treasuryKey
++) {
++  // Deploys LTE contract (must be compiled first)
++  const contractId = await storeAndDeployLTEContract(
++    client,
++    treasuryKey,
++    getLTEContractPath,
++    tokenInfo
++  );
++
++  // Mint Token supply through contract
++  console.log(`Contract is minting the token...`);
++  const tokenId = await createFungibleToken(client, contractId);
+ 
+-    // Verify Data after
+-    await queryContract(client, contractId);
++  // Verify Data after
++  await queryContract(client, contractId);
+ 
+-    return { 
+-        contractId: contractId.toString(), 
+-        fungibleTokenId: tokenId.toString(), 
+-    };
++  return {
++    contractId: contractId.toString(),
++    fungibleTokenId: tokenId.toString(),
++  };
+ }
+ 
+ const { ethers } = require("ethers");
+@@ -53,38 +78,94 @@ async function main() {
+   //const provider = new ethers.providers.JsonRpcProvider("");
+ 
+   // Hedera Deployer Account
+-  const operatorId = AccountId.fromString(
+-    `${process.env.OPERATOR_ID_ECDSA}`
+-  );
++  const operatorId = AccountId.fromString(`${process.env.OPERATOR_ID_ECDSA}`);
+   const operatorKey = PrivateKey.fromString(
+-  //`${process.env.HBAR_DEPLOYER_PRIVATE_KEY}`
+-  `${process.env.OPERATOR_PVKEY_ECDSA}`
++    //`${process.env.HBAR_DEPLOYER_PRIVATE_KEY}`
++    `${process.env.OPERATOR_PVKEY_ECDSA}`
++  );
++
++  if (operatorId === null || operatorKey === null) {
++    throw new Error(
++      "Environment variables OPERATOR_ID_ECDSA and OPERATOR_PVKEY_ECDSA must be present"
++    );
++  }
++  const client = Client.forTestnet().setOperator(operatorId, operatorKey);
++  const treasuryKey = await clientHandler.getTestnetPrivateKey();
++
++  // Set the operator account in the Hedera client
++  // client.forTestnet("testnet.hedera.com:50005");
++  // client.setOperator(operatorAccountId, operatorPrivateKey);
++
++  // Set variables
++  const tokenInfo = {
++    creatorName: "AWoW3",
++    tokenSymbol: "$$$",
++    tokenName: "ABC",
++    initialSupply: 100000,
++  };
++
++  // 1. Deploy Contract
++  // contracts/hts-precompile/build/LTE_sol_LTE.bin
++  const getLTEContractPath =
++    "contracts/hts-precompile/build/LTE_sol_LTE.bin";
++  const result = await storeAndDeployLTEContract(
++    client,
++    treasuryKey,
++    getLTEContractPath,
++    tokenInfo
++  );
++  console.log("Output is successful");
++  console.log(result);
++  console.log("\nPlease verify all the elements were created successfully.\n");
++  console.log(
++    `Contract: https://explorer.arkhia.io/#/testnet/contract/${result.contractId}`
++  );
++  console.log(
++    `Contract Token: https://explorer.arkhia.io/#/testnet/token/${result.fungibleTokenId}`
+   );
++}
++
++main();
++
++async function storeAndDeployLTEContract(
++  client,
++  treasuryKey,
++  contractPath,
++  tokenInfo
++) {
++  // Remaining code...
+ 
+-if (operatorId === null || operatorKey === null) {
+-  throw new Error(
+-    "Environment variables OPERATOR_ID_ECDSA and OPERATOR_PVKEY_ECDSA must be present"
++  const maxTransactionFee = 50;
++  const contractObject = await contractHandler.addBigContractFile(
++    contractPath,
++    maxTransactionFee,
++    treasuryKey,
++    client
++  );
++  const contractFunctionParameters = new ContractFunctionParameters()
++    .addString(tokenInfo.creatorName)
++    .addString(tokenInfo.tokenSymbol)
++    .addString(tokenInfo.tokenName)
++    .addUint64(tokenInfo.initialSupply);
++
++  const contractTx = await contractHandler.deployContract(
++    contractObject.bytecodeFileId,
++    contractFunctionParameters,
++    client
++  );
++  const contractRx = await signatureHandler.signTransaction(
++    contractTx,
++    client,
++    treasuryKey
++  );
++
++  console.log(`\nContract deployment successfull\n`);
++  console.log(`Contract ID : ${contractRx.contractId}`);
++  console.log(
++    `Contract Solidity ID : ${contractRx.contractId.toSolidityAddress()}`
++  );
++  console.log(
++    `Check it out @ https://explorer.arkhia.io/#/testnet/contract/${contractRx.contractId}\n`
+   );
++  return contractRx.contractId;
+ }
+-const client = Client.forTestnet().setOperator(operatorId, operatorKey);
+-
+-
+-	// Set the operator account in the Hedera client
+-	client.forTestnet("testnet.hedera.com:50005");
+-	client.setOperator(operatorAccountId, operatorPrivateKey);
+-	
+-	// Set variables
+-	const tokenInfo = { creatorName: 'AWoW3', tokenSymbol: '$$$', tokenName: 'ABC', initialSupply: 100000 };
+-  
+-	// 1. Deploy Contract
+-	const getLTEContractPath = './../../../contracts/hts-pre-compile/build/LTE_sol_LTE.bin';
+-	const result = await storeAndDeployLTEContract(client, treasuryKey, getLTEContractPath, tokenInfo);
+-	console.log('Output is successful');
+-	console.log(result);
+-	console.log('\nPlease verify all the elements were created successfully.\n');
+-	console.log(`Contract:          https://explorer.arkhia.io/#/testnet/contract/${result.contractId}`);
+-	console.log(`Contract Token:    https://explorer.arkhia.io/#/testnet/token/${result.fungibleTokenId}`);
+- }
+-  
+- main();
+-  
