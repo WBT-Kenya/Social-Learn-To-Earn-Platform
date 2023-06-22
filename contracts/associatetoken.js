@@ -79,11 +79,6 @@ createSmartContract();
 			let tokenId = tokenCreateRx.tokenId;
 			console.log(`- Created token with ID: ${tokenId} \n`);
 
-					//mint tokens
-			//async function mintToken(tokenId, mintNumber) {
-				//Mint another 500 tokens and freeze the unsigned transaction for manual signing
-			
-
 			//TOKEN ASSOCIATION WITH BOB's ACCOUNT
 
 				async function associateToken(client, tokenId, privateKey) {
