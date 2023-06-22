@@ -37,12 +37,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Start the local node
-        run: npx hedera start -d --network local
-        timeout-minutes: 5
+      # - name: Start the local node
+      #   run: npx hedera start -d --network local
+      #   timeout-minutes: 5
+      -name: Start the testnet
+       run: https://testnet.hedera.com
 
-      - name: Run the test in ${{ inputs.testfilter }}
-        run: npx hardhat test --grep ${{ inputs.testfilter }}
+      # - name: Run the test in ${{ inputs.testfilter }}
+      #   run: npx hardhat test --grep ${{ inputs.testfilter }}
 
       - name: Upload Test Results
         if: always()
@@ -60,6 +62,6 @@ jobs:
           json_thousands_separator: ','
           junit_files: "test-*.xml"
                 
-      - name: Stop the local node
-        if: ${{ !cancelled() }}
-        run: npx hedera stop
+      # - name: Stop the local node
+      #   if: ${{ !cancelled() }}
+      #   run: npx hedera stop

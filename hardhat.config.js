@@ -23,16 +23,16 @@ module.exports = {
       }
     }
   },
-  // solidity: {
-  //   version: "0.8.19",
-  //   settings: {
-  //     optimizer: {
-  //       enabled: true,
-  //       runs: 500,
-  //     },
-  //   },
-  // },
- // const hex = utf8ToHex(EVM_PRIVATE_KEY ?? '');
+  solidity: {
+    version: "0.8.19",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 500,
+      },
+    },
+  },
+//  const hex = utf8ToHex(EVM_PRIVATE_KEY ?? '');
  
   defaultNetwork:"relay",
   networks: {
