@@ -7,11 +7,11 @@ on:
         required: true
         type: string
 
-env:
-  RELAY_IMAGE_TAG: main
-  NETWORK_NODE_IMAGE_TAG: 0.38.0-alpha.0
-  HAVEGED_IMAGE_TAG: 0.38.0-alpha.0
-  MIRROR_IMAGE_TAG: 0.79.0-beta1
+# env:
+#   RELAY_IMAGE_TAG: main
+#   NETWORK_NODE_IMAGE_TAG: 0.38.0-alpha.0
+#   HAVEGED_IMAGE_TAG: 0.38.0-alpha.0
+#   MIRROR_IMAGE_TAG: 0.79.0-beta1
 
 jobs:
   acceptance-workflow:
@@ -50,9 +50,9 @@ jobs:
                 export HEDERA_OPERATOR_KEY= '302e020100300506032b657004220420465d4d45631427ebf18527ae695ce355ba537a9ea613ae242d02ef829e2bcbdc'
     
             # Start the Hedera testnet node (replace the command with the appropriate one for your SDK or executable)
-          npx hedera start -d --network $HEDERA_NETWORK
+            npx hedera start -d --network $HEDERA_NETWORK
     
-  timeout-minutes: 5
+        timeout-minutes: 5
 
       # - name: Run the test in ${{ inputs.testfilter }}
       #   run: npx hardhat test --grep ${{ inputs.testfilter }}
