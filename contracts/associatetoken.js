@@ -26,8 +26,8 @@ const operatorId = AccountId.fromString(process.env.OPERATOR_ID);
 const operatorKey = PrivateKey.fromString(process.env.OPERATOR_PVKEY);
 const treasuryId = AccountId.fromString(process.env.TREASURY_ID);
 const treasuryKey = PrivateKey.fromString(process.env.TREASURY_PVKEY);
-const bobId = AccountId.fromString(process.env.BOB_ID);
-const bobKey = PrivateKey.fromString(process.env.BOB_PVKEY);
+const maryId = AccountId.fromString(process.env.MARY_ID);
+const maryKey = PrivateKey.fromString(process.env.MARY_PVKEY);
 
 const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 
@@ -55,13 +55,11 @@ async function createSmartContract() {
 	  console.log("The smart contract ID is " + newContractId);
 }	
 createSmartContract(); 
-  
-  // Call the async function
 
 		async function createFungibleToken() {
 			
 			
-			//CREATE FUNGIBLE TOKEN (STABLECOIN)
+			//CREATE FUNGIBLE TOKEN (HBAR,STABLECOIN)
 			let tokenCreateTx = await new TokenCreateTransaction()
 				.setTokenName("AWoW3")
 				.setTokenSymbol("ABC")
@@ -79,7 +77,7 @@ createSmartContract();
 			let tokenId = tokenCreateRx.tokenId;
 			console.log(`- Created token with ID: ${tokenId} \n`);
 
-			//TOKEN ASSOCIATION WITH BOB's ACCOUNT
+			//TOKEN ASSOCIATION WITH MARY's ACCOUNT
 
 				async function associateToken(client, tokenId, privateKey) {
 
@@ -93,24 +91,24 @@ createSmartContract();
 			//BALANCE CHECK
 				var balanceCheckTx = await new AccountBalanceQuery().setAccountId(treasuryId).execute(client);
 				console.log(`- Treasury balance: ${balanceCheckTx.tokens._map.get(tokenId.toString())} units of token ID ${tokenId}`);
-				var balanceCheckTx = await new AccountBalanceQuery().setAccountId(bobId).execute(client);
-				console.log(`- Bob's balance: ${balanceCheckTx.tokens._map.get(tokenId.toString())} units of token ID ${tokenId}`);
+				var balanceCheckTx = await new AccountBalanceQuery().setAccountId(maryId).execute(client);
+				console.log(`-Mary's balance: ${balanceCheckTx.tokens._map.get(tokenId.toString())} units of token ID ${tokenId}`);
 
-			//TRANSFER TOKEN FROM TREASURY TO BOB
+			//TRANSFER TOKEN FROM TREASURY TO MARY
 				let tokenTransferTx = await new TransferTransaction()
 					.addTokenTransfer(tokenId, treasuryId, -2500)
-					.addTokenTransfer(tokenId, bobId, 2500)
+					.addTokenTransfer(tokenId, maryId, 2500)
 					.freezeWith(client)
 					.sign(treasuryKey);
 				let tokenTransferSubmit = await tokenTransferTx.execute(client);
 				let tokenTransferRx = await tokenTransferSubmit.getReceipt(client);
-				console.log(`\n- Token transfer from Treasury to Bob: ${tokenTransferRx.status} \n`);
+				console.log(`\n- Token transfer from Treasury to Mary: ${tokenTransferRx.status} \n`);
 
 				//BALANCE CHECK
 				var balanceCheckTx = await new AccountBalanceQuery().setAccountId(treasuryId).execute(client);
 				console.log(`- Treasury balance: ${balanceCheckTx.tokens._map.get(tokenId.toString())} units of token ID ${tokenId}`);
-				var balanceCheckTx = await new AccountBalanceQuery().setAccountId(bobId).execute(client);
-				console.log(`- Bob's balance: ${balanceCheckTx.tokens._map.get(tokenId.toString())} units of token ID ${tokenId}`);
+				var balanceCheckTx = await new AccountBalanceQuery().setAccountId(maryId).execute(client);
+				console.log(`- Mary's balance: ${balanceCheckTx.tokens._map.get(tokenId.toString())} units of token ID ${tokenId}`);
 
 			}	
 	

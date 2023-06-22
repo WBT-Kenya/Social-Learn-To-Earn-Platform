@@ -6,22 +6,12 @@ require('dotenv').config({
   encoding: 'UTF-8'
 });
 
-// const sdkPath = '../contracts/hedera.sdk/';
-// const SolidityTypes = require(sdkPath + 'constants/solidity');
-
-// const clientHandler = require('../contracts/hedera.sdk/handlers/clientHandler');
-// //const accountHandler = require('../../hedera.sdk/handlers/accountHandler');
-// const contractHandler = require('../contracts/hedera.sdk/handlers/contractHandler');
-// const signatureHandler = require('../contracts/hedera.sdk/handlers/signHandler');
-
-//console.log(process.env.OPERATOR_ID)
-
 const operatorId= AccountId.fromString(process.env.OPERATOR_ID);
 const operatorKey=PrivateKey.fromString(process.env.OPERATOR_PVKEY);
 const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 //const treasuryKey = TreasuryKey.fromString(process.env.TREASURY_KEY);
     
-async function createBytecodeFile() {
+async function createSmartContract() {
   const bytecode =  fs.readFileSync("./contracts/hts-precompile/build/LTE_sol_LTE.bin");
 
     let contractCreate = new ContractCreateFlow()
@@ -44,11 +34,6 @@ async function createBytecodeFile() {
        
 }
 // Call the async function
-createBytecodeFile();
+createSmartContract();
 
-// async function queryContract(client, contractId) {
-//   await contractHandler.getContractCallQuery(client, contractId, "getAccountId", SolidityTypes.Number256);
-//   await contractHandler.getContractCallQuery(client, contractId, "getTokenId", SolidityTypes.Number256);
-// }
 
-// queryContract();
