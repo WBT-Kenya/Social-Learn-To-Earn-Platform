@@ -1,7 +1,41 @@
-import Image from "../assets/image.png";
 import Google from "../assets/google.png";
+import Image from "../assets/image.png";
+import { useState } from "react";
+
+interface FormData {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
+  const [token, setToken] = useState<string | null>("");
+  const [formData, setFormData] = useState<FormData>({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      setToken(data.token);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <section className="flex px-8 py-16 h-screen">
       <div className="flex flex-col space-y-8 px-16 py-32 lg:basis-1/2">
@@ -20,15 +54,23 @@ const Login = () => {
             platform
           </p>
         </div>
-        <form action="" className="flex flex-col space-y-8">
+        <form
+          action=""
+          onSubmit={handleSubmit}
+          className="flex flex-col space-y-8"
+        >
           <input
             type="email"
             placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
             className="p-4 border border-[#D9D9D9] rounded-[33px]"
           />
           <input
             type="password"
             placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
             className="p-4 border border-[#D9D9D9] rounded-[33px]"
           />
           <section className="flex justify-between items-center">
