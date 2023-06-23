@@ -34,9 +34,9 @@ const courses: Course[] = [
       },
       {
         id: 1,
-        title: "2. Second Introduction to The Course",
-        description: "2. Second video of the course",
-        videoUrl: "https://www.youtube.com/embed/7bB_fVDlvhc",
+        title: "Second Introduction to The Course",
+        description: "Second video of the course",
+        videoUrl: "https://www.youtube.com/watch?v=btZH_zKlYcI",
       },
     ],
   },

@@ -32,15 +32,15 @@ const courses: Course[] = [
     content: [
       {
         id: 1,
-        title: "1. Introduction to The Course",
+        title: "Introduction to The Course",
         description: "First video of the course",
         videoUrl: "https://www.youtube.com/embed/7bB_fVDlvhc",
       },
       {
         id: 1,
-        title: "2. Second Introduction to The Course",
+        title: "Second Introduction to The Course",
         description: "Second video of the course",
-        videoUrl: "https://www.youtube.com/embed/7bB_fVDlvhc",
+        videoUrl: "https://www.youtube.com/watch?v=btZH_zKlYcI",
       },
     ],
   },

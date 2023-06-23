@@ -34,7 +34,7 @@ const CourseContent = ({ course }: { course: Course }) => {
               <div className="basis-3/4 flex flex-col space-y-8">
                 <h2 className="text-3xl font-medium">{title}</h2>
                 {content.length > 0 ? (
-                  <div className="video-player">
+                  <div className="h-full w-full">
                     <ReactPlayer
                       url={currentContent.videoUrl}
                       controls={true}
@@ -60,11 +60,15 @@ const CourseContent = ({ course }: { course: Course }) => {
                 <h3 className="text-2xl ">Content</h3>
                 <hr className="border border-gray-400" />
                 {content.length > 0 ? (
-                  <ul className="flex flex-col space-y-3">
+                  <ol className="flex flex-col space-y-3 list-decimal">
                     {content.map((content) => (
                       <li
                         key={content.id}
-                        className={content === currentContent ? `active` : ``}
+                        className={
+                          content === currentContent
+                            ? `bg-gray-300 border border-gray-400 p-4`
+                            : ``
+                        }
                         onClick={() => handleContentChange(content)}
                       >
                         <h3 className="text-black font-bold text-base">
@@ -73,7 +77,7 @@ const CourseContent = ({ course }: { course: Course }) => {
                         <p className="text-gray-600">{content.description}</p>
                       </li>
                     ))}
-                  </ul>
+                  </ol>
                 ) : (
                   <div className="text-base flex flex-col">
                     <p>Course has no content at the moment.</p>
