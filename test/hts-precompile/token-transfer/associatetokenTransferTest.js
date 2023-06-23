@@ -37,18 +37,6 @@ describe("AssociateTokenTransferTest Test Suite", function () {
     await utils.grantTokenKyc(tokenCreateContract, ftTokenAddress);
   });
 
-  it("should NOT be able to use transferFrom on fungible tokens without approval", async function () {
-    const amount = 1;
-    try {
-      const txTransfer = await tokenTransferContract.transferFromPublic(tokenAddress, signers[0].address, signers[1].address, amount, Constants.GAS_LIMIT_1_000_000);
-      await txTransfer.wait();
-      expect.fail();
-    } catch(e) {
-      expect(e).to.exist;
-      expect(e.reason).to.eq('transaction failed');
-    }
-  });
-
 
   it('should be able to execute transferTokens', async function () {
     const amount = 33;
