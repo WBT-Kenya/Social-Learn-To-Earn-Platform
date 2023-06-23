@@ -1,4 +1,6 @@
 const User = require("../models/User");
+const argon2 = require('argon2');
+
 module.exports.signup_get = (req, res) => {
   res.render("signup");
 };
