@@ -1,3 +1,4 @@
+import ReactPlayer from "react-player";
 import { Navbar, Sidebar } from ".";
 import { Course } from "./CourseItem";
 import { useState } from "react";
@@ -6,9 +7,8 @@ export interface CourseContents {
   id: number;
   title: string;
   description: string;
+  videoUrl: string;
 }
-
-// import { Content } from ".";
 
 const CourseContent = ({ course }: { course: Course }) => {
   const { title, description, content } = course;
@@ -30,10 +30,22 @@ const CourseContent = ({ course }: { course: Course }) => {
         </div>
         <div className="pr-12 flex flex-col space-y-16 w-full pt-16">
           <section className="flex">
-            <section className="basis-3/5 flex flex-col space-y-5">
-              <div className="basis-3/4">
+            <section className="basis-3/5 flex flex-col space-y-8">
+              <div className="basis-3/4 flex flex-col space-y-8">
                 <h2 className="text-3xl font-medium">{title}</h2>
-                <p>Video goes here</p>
+                {content.length > 0 ? (
+                  <div className="video-player">
+                    <ReactPlayer
+                      url={currentContent.videoUrl}
+                      controls={true}
+                    />
+                  </div>
+                ) : (
+                  <div className="text-base flex flex-col">
+                    <p>Course has no content at the moment.</p>
+                    <p>Check back later!</p>
+                  </div>
+                )}
               </div>
               <div className="flex flex-col basis-1/4">
                 <h3 className="font-medium text-2xl">Course Description</h3>
@@ -55,10 +67,10 @@ const CourseContent = ({ course }: { course: Course }) => {
                         className={content === currentContent ? `active` : ``}
                         onClick={() => handleContentChange(content)}
                       >
-                        <h3 className="font-semmibold text-base">
+                        <h3 className="text-black font-bold text-base">
                           {content.title}
                         </h3>
-                        <p className="">{content.description}</p>
+                        <p className="text-gray-600">{content.description}</p>
                       </li>
                     ))}
                   </ul>

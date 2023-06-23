@@ -1,6 +1,7 @@
 import CourseItem, { Course } from "./CourseItem";
 import cyberSecImage from "../assets/cybersec.png";
 import digitalLiteracyImage from "../assets/digital-literacy.png";
+import publicSpeakingImage from "../assets/public-speaking.png";
 const courses: Course[] = [
   {
     id: 1,
@@ -17,6 +18,27 @@ const courses: Course[] = [
     description:
       "Learn the fundamentals of digital literacy and how it can be applied to protect your home, office, and business.",
     content: [],
+  },
+  {
+    id: 3,
+    image: publicSpeakingImage,
+    title: "Introduction to Public Speaking",
+    description:
+      "Learn the fundamentals of public speaking and get the most out of your presentations moving forward.",
+    content: [
+      {
+        id: 1,
+        title: "Introduction to The Course",
+        description: "First video of the course",
+        videoUrl: "https://www.youtube.com/embed/7bB_fVDlvhc",
+      },
+      {
+        id: 1,
+        title: "2. Second Introduction to The Course",
+        description: "2. Second video of the course",
+        videoUrl: "https://www.youtube.com/embed/7bB_fVDlvhc",
+      },
+    ],
   },
 ];
 
