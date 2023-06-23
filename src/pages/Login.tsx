@@ -8,7 +8,6 @@ interface FormData {
 }
 
 const Login = () => {
-  const [token, setToken] = useState<string | null>("");
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -30,7 +29,6 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      setToken(data.token);
     } catch (error) {
       console.error(error);
     }

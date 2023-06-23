@@ -2,13 +2,13 @@ import axios from "axios";
 
 const API_URL = "http://localhost:500/api/auth/";
 
-interface RegisterData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  password: string;
-}
+// interface RegisterData {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   phoneNumber: string;
+//   password: string;
+// }
 
 export const register = (
   firstName: string,

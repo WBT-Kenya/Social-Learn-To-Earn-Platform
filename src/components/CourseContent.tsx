@@ -65,9 +65,7 @@ const CourseContent = ({ course }: { course: Course }) => {
                       <li
                         key={content.id}
                         className={
-                          content === currentContent
-                            ? `bg-gray-300 border border-gray-400 p-4`
-                            : ``
+                          content === currentContent ? `bg-gray-300 p-4` : ``
                         }
                         onClick={() => handleContentChange(content)}
                       >
