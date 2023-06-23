@@ -1,38 +1,38 @@
-# LearnToEarn Backend- QuickStart<br>
+# INSPIRE, LEARN, VERIFY & EARN SOCIAL PLATFORM
 
--A collections of code snippets to get your started with Learn to Earn social platform and the Hedera blockchain network.<br>The code is tested with Hedera Consensus testnet and  the default hashgraph-sdk.
-<p>
--To develop, test and run this project, you are required to clone the project in your local machine, install all the dependencies and then execute the related COMMANDS on "localhost:3001". <br> -We use hedera's javascript SDK with npm package.
-</p>
+## Project Summary
 
-# Installations<br>
--Go to the directory that you have cloned this project and run:<br>
--npm init -y<br>
--npm install --save @hashgraph/sdk<br>
--npm install dotenv<p>
+- The social platform is the first inclusive Web3 social media mentorship, education and earning platform that empowers underprivileged girls and women in Africa through the use of blockchain and Web3 technologies.
 
-# Languages <br>
--Nodejs <br>
--Reactjs <br>
--Solidity <p>
+## Problem Statement
 
-# Getting Started <br>
--Create Hedera Testnet account. Visit  https://docs.hedera.com/hedera/getting-started/environment-set-up<br>
--Save the account credentials/environment variables in .env file of your project.<br>
--Store the .env file in the gitignore file so that it's not pushed to the repo with the other necessary files.<br>
--Install Hashpack browser extension wallet and set up testnet account in it.<br>
--Create Mongodb Cloud Atlas account . Visit https://www.mongodb.com/cloud/atlas/register <br>
--Configure your application/project to connect with the database for user authentication storage.<br>
--Also create IPFS account for storage of content files. <br>
--Test using Postman that mongodb and IPFS are connected to your project.<br>
+- Currently, young girls between ages 14 and 24 are most affected by lack of access to quality education. This makes them vulnerable to misinformation and disinformation in social media platforms. This is a major challenge to the achievement of the Sustainable Development Goals (SDGs) by 2030.
 
+## Solution
 
-<<<<<<< HEAD
-=======
+- This is where we come in by building a social media platform that connects these young girls to mentors and role models who can help them make informed decisions about their lives and careers. This platform will also help them to learn new skills and earn tokens as an incentive for going through the learning process.
+- The project is built on Hedera Hashgraph, a public distributed ledger that enables anyone to transact, play, and socialize in a secure, trusted, and fair manner.
 
+## Installations
 
+- Clone the project to your local machine
+- Navigate to the project directory
+- Run `npm install` to install all the dependencies
+- Run `npm start` to start the server
 
+## Languages
 
+- Nodejs
+- Reactjs
+- Solidity
 
+### Getting Started
 
->>>>>>> ad0ba1a26a8d1f47b439e9df3567cc037ab1668b
+- Create Hedera Testnet account. Visit https://docs.hedera.com/hedera/getting-started/environment-set-up<
+- Save the account credentials/environment variables in .env file of your project.
+- Store the .env file in the gitignore file so that it's not pushed to the repo with the other necessary files.
+- Install Hashpack browser extension wallet and set up testnet account in it.
+- Create Mongodb Cloud Atlas account . Visit https://www.mongodb.com/cloud/atlas/register
+- Configure your application/project to connect with the database for user authentication storage
+- Also create IPFS account for storage of content files.
+- Test using Postman that mongodb and IPFS are connected to your project.
