@@ -34,5 +34,4 @@
 - Install Hashpack browser extension wallet and set up testnet account in it.
 - Create Mongodb Cloud Atlas account . Visit https://www.mongodb.com/cloud/atlas/register
 - Configure your application/project to connect with the database for user authentication storage
-- Also create IPFS account for storage of content files.
-- Test using Postman that mongodb and IPFS are connected to your project.
+- Test using Postman that mongodb is connected to your project.
