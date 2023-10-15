@@ -11,7 +11,7 @@ connectionParams = {
 }
 
 const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.64ejlaa.mongodb.net/?retryWrites=true&w=majority`;
-const connexion = mongoose.connect(uri, connectionParams).then(()=>console.log('connected to cloud atlas'))
+const connexion = mongoose.connect(uri, connectionParams).then(()=>console.log('connected to mongo cloud atlas'))
 .catch((err) => console.log(err));
 
 module.exports = connexion
