@@ -1,6 +1,10 @@
-import Google from "../assets/google.png";
-import Image from "../assets/image.png";
-import { useState } from "react";
+export {};
+
+import { useState } from 'react';
+// import Google from '../assets/google.png';
+import Image from '../assets/image.png';
+
+
 
 interface FormData {
   email: string;
@@ -9,56 +13,48 @@ interface FormData {
 
 const Login = () => {
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log('Login successful. Message:', data.message);
+        // Redirect or perform other actions based on the response data.
+      } else {
+        const data = await response.json();
+        console.error('Login failed. Error:', data.error);
+        // Provide user-friendly feedback on login failure.
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <section className="flex px-8 py-16 h-screen">
       <div className="flex flex-col space-y-8 px-16 py-32 lg:basis-1/2">
-        <div className="flex justify-between">
-          <h2 className="font-bold text-[40px] text-[#0F305E]">Login</h2>
-          <a
-            href="/signup"
-            className="bg-[#F5F5F5] rounded-[34px] text-[#000000] px-16 py-3 text-[16px] leading-[26px]"
-          >
-            SignUp
-          </a>
-        </div>
-        <div className="text-[#0F305E] font-medium text-[18px] leading-[26px]">
-          <p>
-            Welcome back, please enter your email and password to access the
-            platform
-          </p>
-        </div>
-        <form
-          action=""
-          onSubmit={handleSubmit}
-          className="flex flex-col space-y-8"
-        >
+        <form action="" onSubmit={handleSubmit} className="flex flex-col space-y-8">
           <input
             type="email"
+            name="email" // Unique name attribute for email field
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
@@ -66,39 +62,28 @@ const Login = () => {
           />
           <input
             type="password"
+            name="password" // Unique name attribute for password field
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             className="p-4 border border-[#D9D9D9] rounded-[33px]"
           />
-          <section className="flex justify-between items-center">
-            <div className="flex items-center space-x-6">
-              <input type="checkbox" name="" id="" />
-              <a href="forgot">Remember me</a>
-            </div>
-            <a href="forgot-pass">Forgot Password</a>
-          </section>
-          <input
-            type="submit"
-            value="Login"
-            className="text-center w-full text-white bg-[#2D3B79] p-4 text-[16px] leading-[24px] rounded-[29px]"
-          />
+          <button type="submit" className="text-center w-full text-white bg-[#2D3B79] p-4 text-[16px] leading-[24px] rounded-[29px]">
+            Login
+          </button>
         </form>
-        <a
-          href="google"
-          className="grid place-items-center bg-[#F5F5F5] p-4 rounded-[29px]"
-        >
-          <div className="flex items-center space-x-6 text-[#2B2B2B]">
-            <img src={Google} alt="" className="" />
-            <p>Log in with Google</p>
-          </div>
-        </a>
       </div>
       <div className="hidden lg:block basis-1/2">
-        <img src={Image} alt="" className="w-[736px] h-full" />
+        <img src={Image} alt="Login Image" className="w-[736px] h-full" />
       </div>
     </section>
   );
 };
 
 export default Login;
+
+
+
+
+
+
