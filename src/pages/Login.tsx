@@ -25,8 +25,12 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        console.log('Login successful');
-        // Redirect to the home page or perform any other desired action
+        // Store the token in a cookie upon successful login
+        const data = await response.json();
+        const token = data.token;
+        document.cookie = `token=${token}; path=/`;
+
+        // Redirect to the home page
         window.location.href = '/';
       } else {
         const data = await response.json();
@@ -41,6 +45,18 @@ const Login = () => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  // Function to check if the user is authenticated
+  function isUserAuthenticated() {
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1');
+    return !!token;
+  }
+
+  // Check if the user is already authenticated on page load
+  if (isUserAuthenticated()) {
+    // Redirect to the home page
+    window.location.href = '/';
+  }
 
   return (
     <section className="flex px-8 py-16 h-screen">
