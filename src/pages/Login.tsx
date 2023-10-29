@@ -1,10 +1,5 @@
-export {};
-
-import { useState } from 'react';
-// import Google from '../assets/google.png';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import Image from '../assets/image.png';
-
-
 
 interface FormData {
   email: string;
@@ -17,8 +12,9 @@ const Login = () => {
     password: '',
   });
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     try {
       const response = await fetch('http://localhost:3001/login', {
         method: 'POST',
@@ -27,23 +23,21 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.status === 200) {
-        const data = await response.json();
-        console.log('Login successful. Message:', data.message);
-        // Redirect or perform other actions based on the response data.
+        console.log('Login successful');
+        // Redirect to the home page or perform any other desired action
+        window.location.href = '/';
       } else {
         const data = await response.json();
-        console.error('Login failed. Error:', data.error);
-        // Provide user-friendly feedback on login failure.
+        console.error(data.error); // Handle the error message
       }
     } catch (error) {
       console.error(error);
     }
   };
-  
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -51,10 +45,10 @@ const Login = () => {
   return (
     <section className="flex px-8 py-16 h-screen">
       <div className="flex flex-col space-y-8 px-16 py-32 lg:basis-1/2">
-        <form action="" onSubmit={handleSubmit} className="flex flex-col space-y-8">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-8">
           <input
             type="email"
-            name="email" // Unique name attribute for email field
+            name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
@@ -62,7 +56,7 @@ const Login = () => {
           />
           <input
             type="password"
-            name="password" // Unique name attribute for password field
+            name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
@@ -81,9 +75,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-
-
-
