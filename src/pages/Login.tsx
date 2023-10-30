@@ -39,7 +39,7 @@ const Login = () => {
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
