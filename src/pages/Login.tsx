@@ -55,7 +55,7 @@ const Login = () => {
   // Check if the user is already authenticated on page load
   if (isUserAuthenticated()) {
     // Redirect to the home page
-    window.location.href = '/';
+    window.location.href = '/dashboard';
   }
 
   return (
