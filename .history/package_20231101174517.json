@@ -1,0 +1,55 @@
+{
+  "name": "@hashgraph/smart-contracts",
+  "version": "0.4.0-SNAPSHOT",
+  "description": "Hedera Smart Contract Service supporting files",
+  "scripts": {
+    "start": "node mongoServer.js"
+    
+  },
+  "files": [
+    "/contracts/**/*.sol",
+    "/contracts/**/**/**/*.sol"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashgraph/hedera-smart-contracts.git"
+  },
+  "author": "Hedera Smart Contracts Team",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/hashgraph/hedera-smart-contracts/issues"
+  },
+  "homepage": "https://github.com/hashgraph/hedera-smart-contracts#readme",
+  "devDependencies": {
+    "@hashgraph/hedera-local": "^2.8.0",
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@openzeppelin/contracts": "^4.9.2",
+    "@openzeppelin/contracts-upgradeable": "^4.8.3",
+    "@openzeppelin/hardhat-upgrades": "^1.22.1",
+    "hardhat": "^2.15.0",
+    "mocha": "^10.2.0",
+    "mocha-junit-reporter": "^2.2.0",
+    "mocha-multi-reporters": "^1.5.1",
+    "nodemon": "^2.0.14"
+    
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "latest",
+    "@nomicfoundation/solidity-analyzer": "^0.1.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-etherscan": "^3.1.7",
+    "argon2": "^0.30.3",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "ethers": "^5.7.2",
+    "express": "^4.18.2",
+    "hashconnect": "^0.0.6",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "solc": "^0.8.20"
+  }
+}

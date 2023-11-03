@@ -1,0 +1,46 @@
+{
+    "sourceFile": "package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1698849779617,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1698849882320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n   \"version\": \"0.4.0-SNAPSHOT\",\n   \"description\": \"Hedera Smart Contract Service supporting files\",\n   \"scripts\": {\n     \"start\": \"nodemon mongoServer.js\"\n+    \n   },\n   \"files\": [\n     \"/contracts/**/*.sol\",\n     \"/contracts/**/**/**/*.sol\"\n@@ -29,9 +30,9 @@\n     \"hardhat\": \"^2.15.0\",\n     \"mocha\": \"^10.2.0\",\n     \"mocha-junit-reporter\": \"^2.2.0\",\n     \"mocha-multi-reporters\": \"^1.5.1\",\n-    \"nodemon\": \"^2.0.22\"\n+    \"nodemon\": \"^2.0.14\"\n     \n   },\n   \"dependencies\": {\n     \"@hashgraph/sdk\": \"latest\",\n"
+                },
+                {
+                    "date": 1698849910850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,10 @@\n   \"name\": \"@hashgraph/smart-contracts\",\n   \"version\": \"0.4.0-SNAPSHOT\",\n   \"description\": \"Hedera Smart Contract Service supporting files\",\n   \"scripts\": {\n-    \"start\": \"nodemon mongoServer.js\"\n-    \n+    \"start\": \"node mongoServer.js\"\n+    \"start\": \"node your-server-file.js\"\n   },\n   \"files\": [\n     \"/contracts/**/*.sol\",\n     \"/contracts/**/**/**/*.sol\"\n"
+                },
+                {
+                    "date": 1698849917344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   \"version\": \"0.4.0-SNAPSHOT\",\n   \"description\": \"Hedera Smart Contract Service supporting files\",\n   \"scripts\": {\n     \"start\": \"node mongoServer.js\"\n-    \"start\": \"node your-server-file.js\"\n+    \n   },\n   \"files\": [\n     \"/contracts/**/*.sol\",\n     \"/contracts/**/**/**/*.sol\"\n"
+                },
+                {
+                    "date": 1698851223192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   \"name\": \"@hashgraph/smart-contracts\",\n   \"version\": \"0.4.0-SNAPSHOT\",\n   \"description\": \"Hedera Smart Contract Service supporting files\",\n   \"scripts\": {\n-    \"start\": \"node mongoServer.js\"\n+    \"start\": \"nodemon mongoServer.js\"\n     \n   },\n   \"files\": [\n     \"/contracts/**/*.sol\",\n"
+                },
+                {
+                    "date": 1698851431916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   \"name\": \"@hashgraph/smart-contracts\",\n   \"version\": \"0.4.0-SNAPSHOT\",\n   \"description\": \"Hedera Smart Contract Service supporting files\",\n   \"scripts\": {\n-    \"start\": \"nodemon mongoServer.js\"\n+    \"start\": \"node mongoServer.js\"\n     \n   },\n   \"files\": [\n     \"/contracts/**/*.sol\",\n"
+                },
+                {
+                    "date": 1698854666306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n   \"name\": \"@hashgraph/smart-contracts\",\n   \"version\": \"0.4.0-SNAPSHOT\",\n   \"description\": \"Hedera Smart Contract Service supporting files\",\n   \"scripts\": {\n-    \"start\": \"node mongoServer.js\"\n+    \"start\": \"nodemon mongoServer.js\"\n     \n   },\n   \"files\": [\n     \"/contracts/**/*.sol\",\n"
+                },
+                {
+                    "date": 1698855071566,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n     \"hardhat\": \"^2.15.0\",\n     \"mocha\": \"^10.2.0\",\n     \"mocha-junit-reporter\": \"^2.2.0\",\n     \"mocha-multi-reporters\": \"^1.5.1\",\n-    \"nodemon\": \"^2.0.14\"\n+    \"nodemon\": \"^2.0.22\"\n     \n   },\n   \"dependencies\": {\n     \"@hashgraph/sdk\": \"latest\",\n"
+                }
+            ],
+            "date": 1698849779617,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"@hashgraph/smart-contracts\",\n  \"version\": \"0.4.0-SNAPSHOT\",\n  \"description\": \"Hedera Smart Contract Service supporting files\",\n  \"scripts\": {\n    \"start\": \"nodemon mongoServer.js\"\n  },\n  \"files\": [\n    \"/contracts/**/*.sol\",\n    \"/contracts/**/**/**/*.sol\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/hashgraph/hedera-smart-contracts.git\"\n  },\n  \"author\": \"Hedera Smart Contracts Team\",\n  \"license\": \"Apache-2.0\",\n  \"bugs\": {\n    \"url\": \"https://github.com/hashgraph/hedera-smart-contracts/issues\"\n  },\n  \"homepage\": \"https://github.com/hashgraph/hedera-smart-contracts#readme\",\n  \"devDependencies\": {\n    \"@hashgraph/hedera-local\": \"^2.8.0\",\n    \"@nomicfoundation/hardhat-chai-matchers\": \"^1.0.6\",\n    \"@nomicfoundation/hardhat-network-helpers\": \"^1.0.8\",\n    \"@openzeppelin/contracts\": \"^4.9.2\",\n    \"@openzeppelin/contracts-upgradeable\": \"^4.8.3\",\n    \"@openzeppelin/hardhat-upgrades\": \"^1.22.1\",\n    \"hardhat\": \"^2.15.0\",\n    \"mocha\": \"^10.2.0\",\n    \"mocha-junit-reporter\": \"^2.2.0\",\n    \"mocha-multi-reporters\": \"^1.5.1\",\n    \"nodemon\": \"^2.0.22\"\n    \n  },\n  \"dependencies\": {\n    \"@hashgraph/sdk\": \"latest\",\n    \"@nomicfoundation/solidity-analyzer\": \"^0.1.0\",\n    \"@nomiclabs/hardhat-ethers\": \"^2.2.3\",\n    \"@nomiclabs/hardhat-etherscan\": \"^3.1.7\",\n    \"argon2\": \"^0.30.3\",\n    \"dotenv\": \"^16.3.1\",\n    \"ejs\": \"^3.1.9\",\n    \"ethers\": \"^5.7.2\",\n    \"express\": \"^4.18.2\",\n    \"hashconnect\": \"^0.0.6\",\n    \"jsonwebtoken\": \"^9.0.0\",\n    \"mongodb\": \"^5.6.0\",\n    \"mongoose\": \"^7.3.0\",\n    \"multer\": \"^1.4.5-lts.1\",\n    \"path\": \"^0.12.7\",\n    \"solc\": \"^0.8.20\"\n  }\n}\n"
+        }
+    ]
+}

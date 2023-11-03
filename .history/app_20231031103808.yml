@@ -1,0 +1,10 @@
+runtime: nodejs14
+
+env_variables:
+  OPERATOR_ID: Y
+  OPERATOR_PVKEY: YOUR_OPERATOR_PRIVATE_KEY
+  TREASURY_ID: YOUR_TREASURY_ID
+  TREASURY_PVKEY: YOUR_TREASURY_PRIVATE_KEY
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
