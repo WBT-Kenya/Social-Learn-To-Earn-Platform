@@ -1,7 +1,7 @@
 import {  Grid,  Container, Typography } from '@mui/material';
 import { faker } from '@faker-js/faker';
 import { useTheme } from "@mui/material/styles";
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 import Iconify from '../components/iconify';
 import {
   AppTasks,
@@ -21,9 +21,9 @@ function DashBoard() {
     return (
       <>
       
-        <Helmet>
+        {/* <Helmet>
         <title> Dashboard | Minimal UI </title>
-        </Helmet>
+        </Helmet> */}
         <Container maxWidth="xl">
           <Typography variant="h4" sx={{ mb: 5 }}>
             Hi, Welcome back
