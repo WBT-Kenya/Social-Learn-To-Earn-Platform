@@ -5,9 +5,9 @@ import Courses from "./sections/@dashboard/blog/BlogsPostCard"
 
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home/> },
+  { path: "/", element: <Signup/>},
   { path: "/login", element: <Login/> },
-  { path: "/signup", element: <Signup/> },
+  { path: "/home", element: <Home/> },
   { path: "/courses", element: <Courses/> },
   {path: "/dashboard", element: <DashBoard/>}
   // ...courses.map((course) => ({

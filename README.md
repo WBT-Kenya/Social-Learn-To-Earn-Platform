@@ -13,5 +13,4 @@
 - Vite
 - TailwindCSS
 - Typescript
-- EsLint
 - Prettier
