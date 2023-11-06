@@ -1,43 +1,38 @@
-import { useState } from 'react';
-import Image from '../assets/image.png';
-import Google from '../assets/google.png';
+import { ChangeEvent, FormEvent, useState } from "react";
+import Image from "../assets/image.png";
+import Google from "../assets/google.png";
+import { client } from "../axios/axios";
+import { useNavigate } from "react-router";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    // confirmPassword: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
   });
 
-  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
-      // Make a POST request to your server to create a new user account
-      const response = await fetch('http://localhost:3001/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const res = await client.post("signup", formData);
+      console.log(res.status);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
       });
-
-      if (response.status === 201) {
-        // Handle successful registration, e.g., redirect to login page
-        console.log('Registration successful');
-      } else {
-        // Handle registration failure, e.g., display an error message
-        console.log('Registration failed');
-      }
+      setTimeout(() => navigate("/login"), 3000);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleChange = (event: { target: { name: any; value: any; }; }) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -89,7 +84,6 @@ const Signup = () => {
             onChange={handleChange}
             className="p-4 border border-[#D9D9D9] rounded-[33px]"
           />
-
           <input
             type="password"
             name="password"
@@ -106,7 +100,6 @@ const Signup = () => {
             onChange={handleChange}
             className="p-4 border border-[#D9D9D9] rounded-[33px]"
           /> */}
-
           <input
             type="submit"
             value="Register"
