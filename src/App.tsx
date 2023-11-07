@@ -5,6 +5,7 @@ import { Navigate} from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/DashboardLayout';
 import BlogPage from './pages/BlogPage';
+import BlogsPostCard from "./sections/@dashboard/blog/BlogsPostCard";
 
 
 const router = createBrowserRouter([
@@ -17,14 +18,13 @@ const router = createBrowserRouter([
     children: [
       { 
         element: 
-          // <Navigate to="/dashboard/app" />,
           <Navigate to="/dashboard/app" />,
           index: true 
       },
       { path: "/dashboard/app", element: <DashBoard /> },
 
       { path: '/dashboard/courses', element: <BlogPage /> },
-      // { path: 'blogs', element: <BlogsPostCard /> },
+      { path: '/dashboard/blogs', element: <BlogsPostCard /> },
     ],
     
   },
