@@ -3,7 +3,22 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const fetchCourses = createAsyncThunk(
   'courses',
   async () => {
-    const response = await fetch('https://awow3.talentlms.com/api/v1/');
+    const getAuthorizationHeader = () => {
+      // Get the logged-in user from Redux.
+      const user = useSelector((state) => state.user);
+    
+      // If the user is logged in, return the authorization header.
+      if (user.logged_in) {
+        return {
+          'Authorization': `Bearer ${rvgBJHQn3DJafh8nLhyN6bH3H9GPqM}`,
+        };
+      
+      }
+      return {};
+    };
+    const response = await fetch('https://awow3.talentlms.com/api/v1/', {
+      headers: getAuthorizationHeader(),
+    });
 
     const data = await response.json();
     const result = [];
