@@ -26,23 +26,7 @@ const Login = () => {
         email: "",
         password: "",
       });
-<<<<<<< HEAD
-
-      if (response.status === 200) {
-        // Store the token in a cookie upon successful login
-        const data = await response.json();
-        const token = data.token;
-        document.cookie = `token=${token}; path=/dashboard`;
-
-        // Redirect to the home page
-        window.location.href = '/dashboard';
-      } else {
-        const data = await response.json();
-        console.error(data.error); // Handle the error message
-      }
-=======
       setTimeout(() => navigate("/dashboard"), 3000)
->>>>>>> 06d061d95941431b18b55ee32d610525de4000da
     } catch (error) {
       console.error(error);
     }

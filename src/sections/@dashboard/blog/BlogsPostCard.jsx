@@ -7,13 +7,16 @@ import CourseCard from './CourseCard';
 const Courses = () => {
   const dispatch = useDispatch();
   const { courses, pending, error } = useSelector((store) => store.courses);
+  console.log(courses);
   useEffect(() => {
+    
     if (courses.length < 1) {
       dispatch(fetchCourses());
     }
   }, [dispatch, courses.length]);
 
   let content;
+  
 
   if (!pending && !error && Array.isArray(courses)) {
     content = (

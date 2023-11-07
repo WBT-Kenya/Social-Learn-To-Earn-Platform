@@ -14,9 +14,31 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
+import { useState } from 'react';
+import axios from 'axios';
+
 
 
 function DashBoard() {
+  const [courses, setCourses] = useState([])
+
+  const fetchCourses = async function () {
+    try {
+      const res = await axios.get("https://awow3.talentlms.com/api/v1/courses", {
+      auth: {
+        username: "rvgBJHQn3DJafh8nLhyN6bH3H9GPqM",
+        password: ""
+      }
+    })
+    setCourses(res.data)
+    console.log(res.status)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
+  fetchCourses()
+  
   const theme = useTheme();
     return (
       <>

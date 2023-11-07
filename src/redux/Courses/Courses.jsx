@@ -10,17 +10,24 @@ export const fetchCourses = createAsyncThunk(
       // If the user is logged in, return the authorization header.
       if (user.logged_in) {
         return {
-          'Authorization': `Bearer ${rvgBJHQn3DJafh8nLhyN6bH3H9GPqM}`,
+          'Authorization': 'Bearer rvgBJHQn3DJafh8nLhyN6bH3H9GPqM',
+          // "origin": "http://localhost:5173",
         };
       
       }
-      return {};
+      return {
+        'Authorization': "User Not logged in"
+      };
     };
-    const response = await fetch('https://awow3.talentlms.com/api/v1/', {
-      headers: getAuthorizationHeader(),
+   
+    const response = await fetch('https://awow3.talentlms.com/api/v1/courses', {
+      headers: {
+        "Authorization" : "Basic cnZnQkpIUW4zREphZmg4bkxoeU42YkgzSDlHUHFNOg=="
+      },
     });
 
     const data = await response.json();
+    console.log("my response" , data);
     const result = [];
     data.forEach((course) => {
       result.push({
