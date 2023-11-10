@@ -19,7 +19,7 @@
     "@mui/lab": "^5.0.0-alpha.151",
     "@mui/material": "^5.14.15",
     "@reduxjs/toolkit": "^1.9.7",
-    "axios": "^1.4.0",
+    "axios": "^1.6.1",
     "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
     "date-fns": "^2.30.0",
