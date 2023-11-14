@@ -33,7 +33,7 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
-    "@hashgraph/sdk": "latest",
+    "@hashgraph/sdk": "^2.37.0",
     "@nomicfoundation/solidity-analyzer": "^0.1.0",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-etherscan": "^3.1.7",
