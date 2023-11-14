@@ -3,7 +3,7 @@
   "version": "0.4.0-SNAPSHOT",
   "description": "Hedera Smart Contract Service supporting files",
   "scripts": {
-    "start": "nodemon mongoServer.js"
+    "start": "nodemon ./src/app.js"
   },
   "files": [
     "/contracts/**/*.sol",
@@ -48,6 +48,8 @@
     "mongoose": "^7.3.0",
     "multer": "^1.4.5-lts.1",
     "path": "^0.12.7",
-    "solc": "^0.8.20"
+    "solc": "^0.8.20",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5"
   }
 }
