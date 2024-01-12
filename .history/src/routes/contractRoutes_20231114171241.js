@@ -21,7 +21,7 @@ const {
   const operatorKey = PrivateKey.fromString(process.env.OPERATOR_PVKEY);
   const treasuryId = AccountId.fromString(process.env.TREASURY_ID);
   const treasuryKey = PrivateKey.fromString(process.env.TREASURY_PVKEY);
-  const numAccountsToCreate = 5; // Change this to the number of accounts you want to create
+  const numAccountsToCreate = 1; // Change this to the number of accounts you want to create
   
   const client = Client.forTestnet().setOperator(operatorId, operatorKey);
   
@@ -57,7 +57,7 @@ const {
           .addHbarTransfer(aliasAccountId, new Hbar(15))
           .freezeWithSigner(wallet);
           
-        transaction = await transaction.signWithSigner(wallet);
+        transaction = await transaction(180).signWithSigner(wallet);
   
         const response = await transaction.executeWithSigner(wallet);
         await response.getReceiptWithSigner(wallet);

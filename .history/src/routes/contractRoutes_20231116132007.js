@@ -21,7 +21,7 @@ const {
   const operatorKey = PrivateKey.fromString(process.env.OPERATOR_PVKEY);
   const treasuryId = AccountId.fromString(process.env.TREASURY_ID);
   const treasuryKey = PrivateKey.fromString(process.env.TREASURY_PVKEY);
-  const numAccountsToCreate = 5; // Change this to the number of accounts you want to create
+  const numAccountsToCreate = 5// Change this to the number of accounts you want to create
   
   const client = Client.forTestnet().setOperator(operatorId, operatorKey);
   
