@@ -38,7 +38,6 @@ export const fetchCourses = createAsyncThunk(
         id: course.course_id,
         category: course.category,
         price: course.price,
-        // price: 0.00,
         reserved: false,
       });
     });

@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchCourses = createAsyncThunk(
   'courses',
-  async () =>{
-    let data = [];
+  async () =>
     try{
       const basicAuth = `Basic ${btoa("rvgBJHQn3DJafh8nLhyN6bH3H9GPqM:")}`;
       
@@ -33,12 +32,11 @@ export const fetchCourses = createAsyncThunk(
     const result = [];
     data.forEach((course) => {
       result.push({
-        name: course.name,
+        name: course.course_name,
         description: course.description,
         id: course.course_id,
         category: course.category,
         price: course.price,
-        // price: 0.00,
         reserved: false,
       });
     });

@@ -33,12 +33,11 @@ export const fetchCourses = createAsyncThunk(
     const result = [];
     data.forEach((course) => {
       result.push({
-        name: course.name,
+        name: course.course_name,
         description: course.description,
         id: course.course_id,
         category: course.category,
         price: course.price,
-        // price: 0.00,
         reserved: false,
       });
     });

@@ -1,0 +1,66 @@
+{
+    "sourceFile": "src/redux/Courses/Courses.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1699973872942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699973880148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   'courses',\n   async () => {\n \n     try{\n-      const basicAuth = `Basic ${btoa(`${\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}${\"\"}`)}`;\n+      const basicAuth = `Basic ${btoa(`${\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}:`)}`;\n       \n       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n         headers: {\n           \"Authorization\" : basicAuth\n"
+                },
+                {
+                    "date": 1699974113937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   'courses',\n   async () => {\n \n     try{\n-      const basicAuth = `Basic ${btoa(`${\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}:`)}`;\n+      const basicAuth = `Basic ${btoa(`${\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}:)}`;\n       \n       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n         headers: {\n           \"Authorization\" : basicAuth\n"
+                },
+                {
+                    "date": 1699974127292,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   'courses',\n   async () => {\n \n     try{\n-      const basicAuth = `Basic ${btoa(`${\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}:)}`;\n+      const basicAuth = `Basic ${btoa(`\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}:\")}`;\n       \n       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n         headers: {\n           \"Authorization\" : basicAuth\n"
+                },
+                {
+                    "date": 1699974135997,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   'courses',\n   async () => {\n \n     try{\n-      const basicAuth = `Basic ${btoa(`\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}:\")}`;\n+      const basicAuth = `Basic ${btoa(\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"\")}`;\n       \n       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n         headers: {\n           \"Authorization\" : basicAuth\n"
+                },
+                {
+                    "date": 1699974141677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   'courses',\n   async () => {\n \n     try{\n-      const basicAuth = `Basic ${btoa(\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"\")}`;\n+      const basicAuth = `Basic ${btoa(\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\":\")}`;\n       \n       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n         headers: {\n           \"Authorization\" : basicAuth\n"
+                },
+                {
+                    "date": 1699974200392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,16 @@\n   'courses',\n   async () => {\n \n     try{\n-      const basicAuth = `Basic ${btoa(\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\":\")}`;\n+      const basicAuth = `Basic ${btoa(\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM:\")}`;\n       \n       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n         headers: {\n           \"Authorization\" : basicAuth\n         },\n       });\n+      \n \n       const data = await response.json();\n \n     }catch(err){\n"
+                },
+                {
+                    "date": 1699974211863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,11 @@\n         headers: {\n           \"Authorization\" : basicAuth\n         },\n       });\n-      \n \n+      if(response.o)\n+\n       const data = await response.json();\n \n     }catch(err){\n       console.log(err);\n"
+                },
+                {
+                    "date": 1699974223088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,11 @@\n           \"Authorization\" : basicAuth\n         },\n       });\n \n-      if(response.o)\n+      if(response.ok){\n+        l\n+      }\n \n       const data = await response.json();\n \n     }catch(err){\n"
+                },
+                {
+                    "date": 1699974234846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n         },\n       });\n \n       if(response.ok){\n-        l\n+        console.log(\"e\");\n       }\n \n       const data = await response.json();\n \n"
+                },
+                {
+                    "date": 1699974242025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,10 @@\n           \"Authorization\" : basicAuth\n         },\n       });\n \n-      if(response.ok){\n-        console.log(\"e\");\n+      if(!response.ok){\n+        console.log(\"\");\n       }\n \n       const data = await response.json();\n \n"
+                },
+                {
+                    "date": 1699974250079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n         },\n       });\n \n       if(!response.ok){\n-        console.log(\"Auth not okay\");\n+        console.log(\"Auth not okay \");\n       }\n \n       const data = await response.json();\n \n"
+                },
+                {
+                    "date": 1699974410739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         console.log(\"Auth not okay !\");\n       }\n \n       const data = await response.json();\n-      console.log();\n+      console.log(dat);\n     }catch(err){\n       console.log(err);\n       \n     }finally{\n"
+                }
+            ],
+            "date": 1699973872942,
+            "name": "Commit-0",
+            "content": "import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';\n\nexport const fetchCourses = createAsyncThunk(\n  'courses',\n  async () => {\n\n    try{\n      const basicAuth = `Basic ${btoa(`${\"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM\"}${\"\"}`)}`;\n      \n      const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {\n        headers: {\n          \"Authorization\" : basicAuth\n        },\n      });\n\n      const data = await response.json();\n\n    }catch(err){\n      console.log(err);\n      \n    }finally{\n      console.log('Courses fetched !');\n    }\n    \n\n\n    console.log(\"my response\" , data);\n   return\n    const result = [];\n    data.forEach((course) => {\n      result.push({\n        name: course.course_name,\n        description: course.description,\n        id: course.course_id,\n        category: course.category,\n        price: course.price,\n        reserved: false,\n      });\n    });\n    return result;\n  },\n);\n\nconst initialState = {\n  courses: [],\n  pending: false,\n  error: false,\n};\n\nconst coursesSlice = createSlice({\n  name: 'courses',\n  initialState,\n  reducers: {\n    handleCourse: (state, { payload }) => {\n      const courses = [];\n      state.courses.forEach((course) => {\n        if (course.id === payload) {\n          courses.push({\n            ...course,\n            reserved: !course.reserved,\n          });\n        } else {\n          courses.push({ ...course });\n        }\n      });\n      return {\n        ...state,\n        courses,\n      };\n    },\n  },\n  extraReducers: (builder) => {\n    builder.addCase(fetchCourses.fulfilled, (state, { payload }) => ({\n      ...state,\n      courses: payload,\n      pending: false,\n      error: false,\n    }));\n    builder.addCase(fetchCourses.pending, (state) => ({\n      ...state,\n      pending: true,\n      error: false,\n    }));\n\n    builder.addCase(fetchCourses.rejected, (state) => ({\n      ...state,\n      pending: false,\n      error: true,\n    }));\n  },\n});\n\nexport default coursesSlice.reducer;\nexport const { handleCourse } = coursesSlice.actions;\n"
+        }
+    ]
+}

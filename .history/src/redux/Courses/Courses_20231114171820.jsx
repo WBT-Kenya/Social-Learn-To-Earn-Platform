@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchCourses = createAsyncThunk(
   'courses',
-  async () =>{
-    let data = [];
+  async () => {
+
     try{
-      const basicAuth = `Basic ${btoa("rvgBJHQn3DJafh8nLhyN6bH3H9GPqM:")}`;
+      const basicAuth = `Basic ${btoa(`${"rvgBJHQn3DJafh8nLhyN6bH3H9GPqM"}:${""}`)}`;
       
       const response = await fetch('https://cors-anywhere.herokuapp.com/https://awow3.talentlms.com/api/v1/courses/', {
         headers: {
@@ -13,12 +13,8 @@ export const fetchCourses = createAsyncThunk(
         },
       });
 
-      if(!response.ok){
-        console.log("Auth not okay !");
-      }
+      const data = await response.json();
 
-     data = await response.json();
-      console.log(data);
     }catch(err){
       console.log(err);
       
@@ -29,16 +25,15 @@ export const fetchCourses = createAsyncThunk(
 
 
     console.log("my response" , data);
-  
+   return
     const result = [];
     data.forEach((course) => {
       result.push({
-        name: course.name,
+        name: course.course_name,
         description: course.description,
         id: course.course_id,
         category: course.category,
         price: course.price,
-        // price: 0.00,
         reserved: false,
       });
     });
