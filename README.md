@@ -1,4 +1,4 @@
-# Beyond BlockChain Frontend
+# Women In Blockchain Technology Kenya (WBTK)-frontend
 
 ## Project setup
 
