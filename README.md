@@ -1,4 +1,4 @@
-# INSPIRE, LEARN, VERIFY & EARN SOCIAL PLATFORM
+# Social Learn To Earn Platform
 
 ## Project Summary
 
@@ -35,3 +35,9 @@
 - Create Mongodb Cloud Atlas account . Visit https://www.mongodb.com/cloud/atlas/register
 - Configure your application/project to connect with the database for user authentication storage
 - Test using Postman that mongodb is connected to your project.
+
+## Get the frontend and backend running:
+  - go to WBTK-backend and run: npm start
+  - go to WBTK-frontend and run npm run dev
+  - go to the browser and run localhost:5173
+
