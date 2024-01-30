@@ -4,7 +4,7 @@
   "sourceName": "contracts/hts-precompile/LTE_tokentransfer.sol",
   "abi": [
     {
-      "anonymous": false,
+      "anonymous":false,
       "inputs": [
         {
           "indexed": false,
