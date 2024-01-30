@@ -1,4 +1,4 @@
-//project set up
+/* project set up */
 {
   "compilerOptions": {
     "composite": true,
