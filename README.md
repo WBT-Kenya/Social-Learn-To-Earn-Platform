@@ -36,7 +36,7 @@
 - Configure your application/project to connect with the database for user authentication storage
 - Test using Postman that mongodb is connected to your project.
 
-## Get the frontend and backend running:
+## Get the frontend and backend running simultaneously:
   - go to WBTK-backend and run: npm start
   - go to WBTK-frontend and run npm run dev
   - go to the browser and run localhost:5173
