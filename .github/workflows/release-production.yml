@@ -20,7 +20,7 @@ jobs:
           path: './hedera-smart-contracts'
         
       - name: Get tag
-        run: echo "TAG=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
+        run: echo "TAG=${GITHUB_REF#refs/*/v}" >>  $GITHUB_ENV
 
       - name: Produce artifact
         run: tar -czf ${{ env.PACKAGE_NAME }}-v${{env.TAG}}.tgz -C ./hedera-smart-contracts .
