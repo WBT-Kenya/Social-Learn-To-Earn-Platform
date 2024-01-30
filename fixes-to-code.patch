@@ -3,7 +3,7 @@ index 0558004..e64eed3 100644
 --- a/.env
 +++ b/.env
 @@ -9,15 +9,15 @@ ARKHIA_JSON_RPC_API_SUFFIX="json-rpc/v1"
- ARKHIA_BASE_API_URL="https://dashboard.arkhia.io/"
+// ARKHIA_BASE_API_URL="https://dashboard.arkhia.io/"
  ARKHIA_API_KEY="7c0AHt21BVc4iLfL1b1Lcfac0YabfBcA"
  
 -OPERATOR_ID=0.0.13731048,  
